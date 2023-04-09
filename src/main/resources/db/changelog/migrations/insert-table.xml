@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="insert-user" author="ala">
+        <insert schemaName="cloud" tableName="USER">
+            <column name="id" value="111111"/>
+            <column name="login" value="Ivan-1111"/>
+            <column name="password" value="123"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert-file" author="ala">
+        <insert schemaName="cloud" tableName="file">
+            <column name="id" value="111"/>
+            <column name="file" value="file"/>
+            <column name="file_name" value="file-1"/>
+            <column name="size" value="12300"/>
+            <column name="upload_date" value="05.04.2023"/>
+            <column name="user_id" value="111111"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

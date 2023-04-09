@@ -1,0 +1,56 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="createTable-USER-001_v2" author="ala">
+        <comment>Создание таблицы "USER". Автор: Абрамова Л.А.</comment>
+        <createTable schemaName="cloud" tableName="USER">
+            <column name="ID" type="serial" remarks="Уникальный идентификатор записи">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="LOGIN" type="varchar(100)" remarks="Логин">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="varchar(250)" remarks="Пароль">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AUTH_TOKEN" type="varchar(250)" remarks="Токен авторизации"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="createIndex-IX_USER_LOGIN" author="ala">
+        <comment>Создание индекса "IX_USER_LOGIN" на таблицу USER. Поле LOGIN. Автор: Абрамова Л.А.</comment>
+        <createIndex
+                indexName="IX_USER_LOGIN"
+                schemaName="cloud"
+                tableName="USER"
+                unique="true">
+            <column name="LOGIN"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="createIndex-IX_USER_PASSWORD" author="ala">
+        <comment>Создание индекса "IX_USER_PASSWORD" на таблицу USER. Поле PASSWORD. Автор: Абрамова Л.А.</comment>
+        <createIndex
+                indexName="IX_USER_PASSWORD"
+                schemaName="cloud"
+                tableName="USER"
+                unique="true">
+            <column name="PASSWORD"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="createIndex-IX_USER_AUTH_TOKEN" author="ala">
+        <comment>Создание индекса "IX_USER_AUTH_TOKEN" на таблицу USER. Поле AUTH_TOKEN. Автор: Абрамова Л.А.</comment>
+        <createIndex
+                indexName="IX_USER_AUTH_TOKEN"
+                schemaName="cloud"
+                tableName="USER"
+                unique="true">
+            <column name="AUTH_TOKEN"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

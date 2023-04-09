@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: migrations/000-create-schema-cloud.sql
+      relativeToChangelogFile: true
+  - includeAll:
+      path: migrations/
+      relativeToChangeLogFile: true

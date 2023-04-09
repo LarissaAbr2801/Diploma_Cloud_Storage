@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="createTable-FILE" author="ala">
+        <comment>Создание таблицы "FILE". Автор: Абрамова Л.А.</comment>
+        <createTable schemaName="cloud" tableName="FILE">
+            <column name="ID" type="serial" remarks="Уникальный идентификатор записи">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="FILE" type="bytea" remarks="Файл"/>
+            <column name="FILE_NAME" type="varchar(250)" remarks="Наименование">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SIZE" type="bigint" remarks="Размер">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPLOAD_DATE" type="date" remarks="Дата загрузки">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER_ID" type="serial" remarks="Владелец">
+                <constraints foreignKeyName="FK_USER_ID" referencedTableSchemaName="cloud" referencedColumnNames="ID" referencedTableName="USER"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

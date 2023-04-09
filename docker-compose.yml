@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  postgres:
+    image: postgres:13.3
+    hostname: localhost
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+  backend:
+    build: ./
+    image: backend:1.0
+    hostname: localhost
+    ports:
+      - 8090:8090
+  frontend:
+    build: frontend/
+    image: frontend:1.0
+    hostname: localhost
+    ports:
+      - 8080:8080
+    depends_on:
+      - backend
